@@ -3,6 +3,7 @@
 Alx interview question
 """
 
+
 def pascal_triangle(n):
     """
     ALX interview pascal triangle
