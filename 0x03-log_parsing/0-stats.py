@@ -45,8 +45,7 @@ def check_format(line: str) -> Union[List[int], bool]:
             return False
 
         return [code, file_size]
-    except Exception as err:
-        print(err)
+    except Exception:
         return False
 
 
@@ -56,8 +55,9 @@ def print_info(file_size, codes):
     """
     response_codes = [200, 301, 400, 401, 403, 404, 405, 500]
     print(f"File size: {file_size}")
-    for i in response_codes:
-        print(f"{i}: {codes.count(i)}")
+    for code in sorted(set(codes)):
+        if code in response_codes:
+            print(f"{code}: {codes.count(code)}")
 
 
 if __name__ == "__main__":
@@ -79,4 +79,4 @@ if __name__ == "__main__":
         except KeyboardInterrupt:
             print_info(file_size, codes)
             counter = 0
-            break
+            continue
