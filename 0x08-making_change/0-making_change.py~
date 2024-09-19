@@ -1,0 +1,23 @@
+#!/usr/bin/bin
+"""
+ALX INTERVIEW QUESTION
+"""
+
+
+def makeChange(coins, total, n=-1):
+    """
+    A function to make change given
+    an array of coins and target price
+    """
+    if total == 0:
+        return 0
+
+    if total <= 0:
+        return -1
+
+    if n == -1:
+        n = len(coins)
+    if n <= 0:
+        return 0;
+
+    return makeChange(coins, total, n - 1) + makeChange(coins, total-coins[n-1], n)
